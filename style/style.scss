@@ -1,0 +1,207 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #eceff1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#game-wrapper {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+#hud {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  #flag_counter {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  #timer_container {
+    position: relative;
+    width: 90%;
+    max-width: 300px;
+    height: 24px;
+    background: #dfdede;
+    border-radius: 12px;
+    overflow: hidden;
+
+    #timer_bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #4db251;
+      width: 100%;
+    }
+
+    #timer_text {
+      position: relative;
+      font-size: 0.95rem;
+      line-height: 24px;
+      text-align: center;
+      z-index: 1;
+      color: #313131;
+    }
+  }
+}
+
+#game-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#gameForm {
+  flex: 0 0 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f7f7f7;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+
+  label {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  input,
+  select {
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+
+  input[type="submit"] {
+    margin-top: 10px;
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #388e3c;
+    }
+  }
+}
+
+#board {
+  display: grid;
+  gap: 3px;
+  justify-content: center;
+  align-content: center;
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 5px;
+}
+
+.board-cell {
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+  text-align: center;
+  background: darkgrey;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+  user-select: none;
+
+  &:hover {
+    background: #858383;
+  }
+}
+
+#gamestate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 24px 36px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d32f2f;
+  display: none;
+  z-index: 10;
+  text-align: center;
+  max-width: 90%;
+  box-sizing: border-box;
+}
+#records {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  margin-top: 1rem;
+  h3 {
+    font-weight: 500;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #game-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #gameForm {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  #board {
+    grid-template-columns: repeat(auto-fit, minmax(28px, 1fr));
+    max-width: 100%;
+  }
+
+  .board-cell {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
+
+  #timer_container {
+    width: 100%;
+    max-width: 280px;
+  }
+}
